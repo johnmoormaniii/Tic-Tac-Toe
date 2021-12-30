@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="app.js" defer></script>
+
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tic-Tac-Toe!</h1>
+        <h2 id="winner-text"></h2>
+        <div class="gameboard">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+
+            <div class="game-over" id="game-over">
+                <button type="button" class="next-round" id="next-round">NEXT ROUND</button>
+            </div>
+
+            <div class="match-over" id="match-over">
+                <button type="button" class="new-game" id="new-game">NEW GAME</button>
+            </div>
+            
+        </div>
+        <div class="game-mode-container">
+            <div class="player-vs">Player vs. </div>
+            <select name="game-mode" id="game-mode">
+                <option value="player">Player</option>
+                <option value="bot">Bot</option>
+            </select>
+        </div>
+        <div class="scoreboard">
+            <div class="player" id="player">
+                <div class="player-name">PLAYER</div>
+                <div class="player-score" id="player-score">
+                </div>
+            </div>
+            <div class="bot" id="bot">
+                <div class="bot-name">BOT</div>
+                <div class="bot-score" id="bot-score">
+                </div>
+            </div>
+        </div>
+        <div class="instructions">FIRST TO THREE WINS!</div>
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,172 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-size-fs: 150px;
+    --mark-color: black;
+    --mark-size: calc(var(--cell-size-fs) * .9);
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameboard{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    position: relative;
+    border: 1px solid black;
+}
+
+.game-mode-container{
+    display: flex;
+}
+
+.scoreboard{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 450px;
+    gap: 5px;
+    margin-top: 25px;
+}
+
+.scoreboard > div{
+    border: 1px solid black;
+    height: 35px;
+}
+
+
+/* ---------- END OF GAME OVERLAY STYLING ----------*/
+
+
+.game-over{
+    background-color: rgba(0,0,0,.8);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0,0);
+}
+
+.game-over.show{
+    transform: scale(1,1);
+    z-index: 10;
+}
+
+.next-round{
+    height: calc(var(--cell-size-fs) * .5);
+    width: calc(var(--cell-size-fs) * 2);
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    transform: scale(0,0);
+}
+
+.next-round.show{
+    transform: scale(1,1);
+    z-index: 11;
+    cursor: pointer;
+}
+
+
+/* ---------- END OF MATCH STYLING ---------- */
+
+.match-over{
+    background-color: rgba(0,0,0,.8);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0,0);
+}
+
+.match-over.show{
+    transform: scale(1,1);
+    z-index: 10;
+}
+
+.new-game{
+    height: calc(var(--cell-size-fs) * .5);
+    width: calc(var(--cell-size-fs) * 2);
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    transform: scale(0,0);
+}
+
+.new-game.show{
+    transform: scale(1,1);
+    z-index: 11;
+    cursor: pointer;
+}
+
+
+/* ---------- CELL STYLING ---------- */
+
+
+.cell{
+    height: var(--cell-size-fs);
+    width: var(--cell-size-fs);
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    width: calc(var(--cell-size-fs) * .1);
+    height: var(--mark-size);
+    background-color: var(--mark-color);
+    position: absolute;
+    cursor: not-allowed;
+}
+
+.cell.x::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after{
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after{
+    content: '';
+    background-color: var(--mark-color);
+    position: absolute;
+    border-radius: 50%;
+    cursor: not-allowed;
+}
+
+.cell.o::before{
+    width: calc(var(--mark-size) * .9);
+    height: calc(var(--mark-size) * .9);
+    background-color: var(--mark-color);
+}
+
+.cell.o::after{
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;
+}
