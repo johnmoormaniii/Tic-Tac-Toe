@@ -1,49 +1,195 @@
+/*
+Colors Used:
+#022F40
+#38AECC
+#0090C1
+#183446
+#046E8F
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
 *, *::before, *::after{
     box-sizing: border-box;
 }
 
 :root{
-    --cell-size-fs: 150px;
-    --mark-color: black;
+    --cell-size-fs: 125px;
+    --mark-color: #38AECC;
+    --gameboard-color: #183446;
     --mark-size: calc(var(--cell-size-fs) * .9);
 }
 
 body, html{
     margin: 0;
     padding: 0;
+    font-family: 'Play', sans-serif;
+    color: white;
 }
 
 .container{
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url("background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container > h1{
+    color: white;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.container > h2{
+    color: white;
+}
+
+.container > h3{
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 .gameboard{
     display: grid;
     grid-template-columns: repeat(3, auto);
     position: relative;
-    border: 1px solid black;
+    border: 3px solid white;
+    background-color: #183446;
+    margin-bottom: 25px;
 }
 
 .game-mode-container{
     display: flex;
+    gap: 10px;
 }
+
+.game-mode-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-vs{
+    font-size: 1.25rem;
+}
+
+
+
+
+
+#button-container{
+    position: relative;
+}
+
+#game-mode{
+    font-size: 1.25rem;
+    background-color: white;
+    border: none;
+    padding: 2px;
+    border-radius: 5px;
+    font-family: 'Play', sans-serif;
+}
+
+#reset-button{
+    width: 100%;
+    height: 2rem;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Play', sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* ---------- SCOREBOARD STYLING ----------*/
+
 
 .scoreboard{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 450px;
-    gap: 5px;
-    margin-top: 25px;
+    display: flex;
+    width: 375px;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    position: relative;
+    background-color: var(--gameboard-color);
+    border: 3px solid white;
 }
 
-.scoreboard > div{
-    border: 1px solid black;
-    height: 35px;
+#player-1{
+    padding-left: 10px;
+}
+
+#player-2{
+    text-align: right;
+    padding-right: 10px;
+}
+
+#x-symbol{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+#x-symbol::before{
+    content: '';
+    background-color: var(--mark-color);
+    position: absolute;
+    width: 5px;
+    height: 45px;
+    transform: rotate(-45deg);
+}
+
+#x-symbol::after{
+    content: '';
+    background-color: var(--mark-color);
+    position: absolute;
+    width: 5px;
+    height: 45px;
+    transform: rotate(45deg);
+}
+
+#center-border{
+    height: 100%;
+    width: 1px;
+    background-color: white;
+}
+
+#o-symbol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#o-symbol::before{
+    content: '';
+    background-color: var(--mark-color);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+#o-symbol::after{
+    content: '';
+    background-color: var(--gameboard-color);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
 }
 
 
@@ -60,6 +206,10 @@ body, html{
     justify-content: center;
     align-items: center;
     transform: scale(0,0);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.5rem;
 }
 
 .game-over.show{
@@ -74,6 +224,8 @@ body, html{
     border: none;
     border-radius: 10px;
     transform: scale(0,0);
+    font-family: 'Play', sans-serif;
+    font-size: 1.5rem;
 }
 
 .next-round.show{
@@ -100,6 +252,10 @@ body, html{
 .match-over.show{
     transform: scale(1,1);
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.5rem;
 }
 
 .new-game{
@@ -109,6 +265,8 @@ body, html{
     border: none;
     border-radius: 10px;
     transform: scale(0,0);
+    font-family: 'Play', sans-serif;
+    font-size: 1.5rem;
 }
 
 .new-game.show{
@@ -124,7 +282,7 @@ body, html{
 .cell{
     height: var(--cell-size-fs);
     width: var(--cell-size-fs);
-    border: 1px solid black;
+    border: 1px solid white;
     position: relative;
     display: flex;
     justify-content: center;
@@ -168,5 +326,14 @@ body, html{
 .cell.o::after{
     width: calc(var(--mark-size) * .7);
     height: calc(var(--mark-size) * .7);
-    background-color: white;
+    background-color: var(--gameboard-color);
+}
+
+
+/* ---------- BUTTON HOVER STYLING ---------- */
+
+
+#reset-button:hover{
+    transform: scale(1.1);
+    transition: ease-in-out .1s;
 }

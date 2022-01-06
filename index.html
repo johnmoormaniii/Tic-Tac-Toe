@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://kit.fontawesome.com/ff5ae8fa61.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
 
     <title>Tic Tac Toe</title>
@@ -15,7 +16,8 @@
 
     <div class="container">
         <h1>Tic-Tac-Toe!</h1>
-        <h2 id="winner-text"></h2>
+        <h2 id="game-number">Game</h2>
+        <h3>First To Three Wins!</h3>
         <div class="gameboard">
             <div class="cell"></div>
             <div class="cell"></div>
@@ -28,34 +30,41 @@
             <div class="cell"></div>
 
             <div class="game-over" id="game-over">
+                <div id="next-round-text">PLAYER WINS!</div>
                 <button type="button" class="next-round" id="next-round">NEXT ROUND</button>
             </div>
 
             <div class="match-over" id="match-over">
+                <div id="new-game-text">PLAYER WINS!</div>
                 <button type="button" class="new-game" id="new-game">NEW GAME</button>
             </div>
             
         </div>
-        <div class="game-mode-container">
-            <div class="player-vs">Player vs. </div>
-            <select name="game-mode" id="game-mode">
-                <option value="player">Player</option>
-                <option value="bot">Bot</option>
-            </select>
+        <div id="button-container">
+            <div class="game-mode-container">
+                <div class="player-vs">Player vs. </div>
+                <select name="game-mode" id="game-mode">
+                    <option value="player">Player</option>
+                    <option value="bot-easy">Bot - Easy</option>
+                </select>
+            </div>
+            <button type="button" id="reset-button">RESET GAME</button>
         </div>
         <div class="scoreboard">
-            <div class="player" id="player">
-                <div class="player-name">PLAYER</div>
-                <div class="player-score" id="player-score">
-                </div>
+            <div class="player-1" id="player-1">
+                <div class="player-1-name">PLAYER 1</div>
+                <div class="player-1-score" id="player-1-score"></div>   
             </div>
-            <div class="bot" id="bot">
-                <div class="bot-name">BOT</div>
-                <div class="bot-score" id="bot-score">
-                </div>
+
+            <div id="x-symbol"></div>
+            <div id="center-border"></div>
+            <div id="o-symbol"></div>
+
+            <div class="player-2" id="player-2">
+                <div class="player-2-name">PLAYER 2</div>
+                <div class="player-2-score" id="player-2-score"></div>
             </div>
         </div>
-        <div class="instructions">FIRST TO THREE WINS!</div>
         
     </div>
     
